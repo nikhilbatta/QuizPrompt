@@ -36,18 +36,26 @@ $(document).ready(function(){
   $("#formOne").submit(function(event){
   event.preventDefault();
   var toppingArray = [];
-  $('.toppings').each(function(topping) {
-    console.log(topping)
-    if ($(topping).is(':checked')){
-      console.log(topping)
-    }
-   });
+  $(".toppings[name='topping']:checked").each(function(){
+    toppingArray.push($(this).val())
+    ;}
+  );
+  console.log(toppingArray)
+  // $('.toppings').each(function(topping) {
+  //   console.log(topping)
+  //   if ($(topping).is(':checked')){
+  //     console.log(topping)
+  //   }
+  //  });
    console.log(toppingArray)
   var amountGrabber = $("#amount").val(); //user inputted value
   //user inputted check
-  var sizeGrabber = $("#size").val();// same thing
+  var sizeGrabber = parseInt($("#size").val());// same thing
   var newPizza = new Pizza(toppingArray,sizeGrabber)
   newOrder.addPizzas(newPizza)
   console.log(newOrder)
+});
+$("#clearButton").click(function(event){
+  newOrder = new Order();
 });
 });
