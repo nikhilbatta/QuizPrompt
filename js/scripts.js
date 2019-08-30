@@ -3,17 +3,23 @@ function Pizza(amount,toppings,size){
   this.toppings = toppings,
   this.size = size
 }
-Pizza.prototype.addUpPrice = function(){
-  this.price = //amount of topings value plus amount of pizza
-  // amount of toppings + amountofpizza times baseprice + size
-}
-function Customer (amountOfPizza){
-  this.price = 0
+// Pizza.prototype.addUpPrice = function(){
+//   this.price = //amount of topings value plus amount of pizza
+//   // amount of toppings + amountofpizza times baseprice + size
+// }
+function Customer (){
+  this.price = 0;
 }
 
 $(document).ready(function(){
-  var amountGrabber = //user inputted value
-  var toppingGrabber = //user inputted check
-  var sizeGrabber = // same thing
+  $("#formOne").submit(function(event){
+  event.preventDefault();
+  var amountGrabber = $("#amount").val() //user inputted value
+  var toppingGrabber = $("input[type='checkbox']").val();//user inputted check
+  var sizeGrabber = $("#size").val()// same thing
+  console.log(amountGrabber)
+  console.log(toppingGrabber)
+  console.log(sizeGrabber)
   var newCustomer = new Customer()
-})
+});
+});
