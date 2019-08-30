@@ -1,35 +1,53 @@
-function Pizza(amount,toppings,size,totalprice){
-  this.amount = amount,
+function Pizza(toppings,size){
   this.toppings = toppings,
   this.size = size,
-  this.baseprice = 5;
-  this.totalprice = totalprice;
+  this.baseprice = 2;
 }
-Pizza.prototype.addUpPrice = function(){
-  this.totalprice = (this.baseprice * this.amount) + this.toppings + this.size
-  console.log(this.price) //amount of topings value plus amount of pizza
+Pizza.prototype.getToppingCount = function() {
+  return this.toppings.length;
+}
+// Pizza.prototype.addOrders = function(){
+//   this.items = []
+// }
+Pizza.prototype.getOnePizzaPrice = function(){
+var pizzaPrice = this.baseprice + this.getToppingCount() + this.size
+  return pizzaPrice; //amount of topings value plus amount of pizza
   // amount of toppings + amountofpizza times baseprice + size
 }
-function Customer (){
-  this.price = 0;
+function Order(amount){
+  this.pizzas = [];
+  this.OrderTotal = function(){
+    var totalprice = 0;
+    this.pizzas.forEach(function(pizza){
+      totalprice += pizza.getOnePizzaPrice();
+    })
+    return totalprice;
+  }
 }
 
+Order.prototype.addPizzas = function(pizza){
+  this.pizzas.push(pizza)
+}
+function displayOrder(){
+
+}
+var newOrder = new Order();
 $(document).ready(function(){
   $("#formOne").submit(function(event){
   event.preventDefault();
-  var toppingGrabber = 0;
-  $('.toppings:checked').each(function() {
-       toppingGrabber+=1
+  var toppingArray = [];
+  $('.toppings').each(function(topping) {
+    console.log(topping)
+    if ($(topping).is(':checked')){
+      console.log(topping)
+    }
    });
-  var amountGrabber = parseInt($("#amount").val()); //user inputted value
+   console.log(toppingArray)
+  var amountGrabber = $("#amount").val(); //user inputted value
   //user inputted check
-  var sizeGrabber = parseInt($("#size").val());// same thing
-  console.log(amountGrabber)
-  console.log(toppingGrabber)
-  console.log(sizeGrabber)
-  var newCustomer = new Customer()
-  var newPizza = new Pizza(amountGrabber,toppingGrabber,sizeGrabber,newCustomer)
-  newPizza.addUpPrice();
-  console.log(newPizza)
+  var sizeGrabber = $("#size").val();// same thing
+  var newPizza = new Pizza(toppingArray,sizeGrabber)
+  newOrder.addPizzas(newPizza)
+  console.log(newOrder)
 });
 });
