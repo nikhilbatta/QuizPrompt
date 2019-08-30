@@ -8,7 +8,6 @@ Pizza.prototype.addUpPrice = function(){
   // amount of toppings + amountofpizza times baseprice + size
 }
 function Customer (amountOfPizza){
-  this.amountOfPizza = ammountOfPizza
   this.price = 0
 }
 
