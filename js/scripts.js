@@ -28,7 +28,7 @@ function Order(amount){
 Order.prototype.addPizzas = function(pizza){
   this.pizzas.push(pizza)
 }
-function displayOrder(alldata){
+Order.prototype.displayOrder = function(alldata){
   // this.data = alldata
 return $("#formOne").append("<h1>" + alldata + "</h1>")
 }
@@ -54,8 +54,9 @@ $(document).ready(function(){
   var sizeGrabber = parseInt($("#size").val());// same thing
   var newPizza = new Pizza(toppingArray,sizeGrabber)
   newOrder.addPizzas(newPizza)
+  newOrder.displayOrder(newOrder.orderTotal())
   console.log(newOrder)
-  displayOrder(order.pizza.toppings)
+
 });
 $("#clearButton").click(function(event){
   newOrder = new Order();
