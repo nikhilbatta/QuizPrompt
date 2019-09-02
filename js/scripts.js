@@ -1,7 +1,7 @@
 function Pizza(toppings,size){
   this.toppings = toppings,
   this.size = size,
-  this.baseprice = 2;
+  this.baseprice = 4;
 }
 Pizza.prototype.getToppingCount = function() {
   return this.toppings.length;
@@ -28,9 +28,9 @@ function Order(amount){
 Order.prototype.addPizzas = function(pizza){
   this.pizzas.push(pizza)
 }
-Order.prototype.displayOrder = function(alldata){
+Order.prototype.displayOrder = function(order){
   // this.data = alldata
-return $("#formOne").append("<h1>" + alldata + "</h1>")
+return $("#totalPrice").text("$" + order)
 }
 var newOrder = new Order();
 $(document).ready(function(){
@@ -54,11 +54,12 @@ $(document).ready(function(){
   var sizeGrabber = parseInt($("#size").val());// same thing
   var newPizza = new Pizza(toppingArray,sizeGrabber)
   newOrder.addPizzas(newPizza)
-  newOrder.displayOrder(newOrder.orderTotal())
+  newOrder.displayOrder(newOrder.orderTotal());
   console.log(newOrder)
 
 });
 $("#clearButton").click(function(event){
   newOrder = new Order();
+  $("#totalPrice").text(" ")
 });
 });
