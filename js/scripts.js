@@ -12,6 +12,7 @@ Pizza.prototype.getOnePizzaPrice = function(){
 }
 function Order(amount){
   this.pizzas = [];
+  console.log(this.pizzas)
   this.orderTotal = function(){
     var totalprice = 0;
     this.pizzas.forEach(function(pizza){
@@ -23,16 +24,15 @@ function Order(amount){
 Order.prototype.addPizzas = function(pizza){
   this.pizzas.push(pizza)
 }
-Order.prototype.displayOrder = function(){
-  var order;
-  this.pizzas.forEach(function(pizza){
-    $("#totalPrice").text(pizza.toppings)
-    console.log(pizza.toppings)
-    console.log(pizza.size)
-    console.log(pizza.getOnePizzaPrice())
-  })
-  console.log(order)
-  return order;
+Order.prototype.displayOrder = function(newNew){
+  console.log(newNew)
+  // this.pizzas.forEach(function(pizza){
+  //   console.log(pizza)
+    $("#toppings").append("<li>" + newNew + "</li>");
+  //   console.log(pizza.toppings)
+  //   console.log(pizza.size)
+  //   })
+
 }
 var newOrder = new Order();
 $(document).ready(function(){
@@ -45,12 +45,12 @@ $(document).ready(function(){
     );
     console.log(toppingArray)
     console.log(toppingArray)
-    var amountGrabber = $("#amount").val(); //user inputted value
+    var amountGrabber = parseInt($("#amount").val()); //user inputted value
     //user inputted check
     var sizeGrabber = parseInt($("#size").val());// same thing
     var newPizza = new Pizza(toppingArray,sizeGrabber)
     newOrder.addPizzas(newPizza)
-    newOrder.displayOrder();
+    newOrder.displayOrder(newPizza);
     console.log(newOrder.displayOrder())
   });
   $("#clearButton").click(function(event){
