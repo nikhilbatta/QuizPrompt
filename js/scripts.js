@@ -24,9 +24,38 @@ function Order(){
 Order.prototype.addPizzas = function(pizza){
   this.pizzas.push(pizza)
 }
-Order.prototype.displayOrder = function(newPizza){
-$("#toppings").append("<li>" + newPizza.toppings + "</li>");
-$("#size2").append("<li>" + newOrder.orderTotal() + "</li>");
+Order.prototype.displayOrder = function(){
+// $("#toppings").append("<li>" + newPizza.toppings + "</li>");
+// $("#size2").append("<li>" + newOrder.orderTotal() + "</li>");
+//clear the display
+$("#pizzaOne").text("")
+var orderString = "";
+orderString += "<Table>"
+this.pizzas.forEach(function(pizza){
+  orderString += displayPizza(pizza)
+})
+orderString += getOrderSummaryString(this) ;
+
+$("#pizzaOne").append(orderString)
+}
+
+function getOrderSummaryString(order)
+{
+  var summaryString = "<tr>"
+  summaryString += "<td> Order Total: " + order.orderTotal() + "</td>"
+  summaryString += "<td> Number of Pizzas: " + order.pizzas.length + "</td>"
+  summaryString += "</tr>"
+  return summaryString ;
+}
+
+function displayPizza(pizza){
+  var pizzaString = "";
+  pizzaString = pizzaString +  "<tr>"
+  pizzaString = pizzaString +  "<td>Size: " + pizza.size + "</td>"
+  pizzaString = pizzaString +   "<td>Toppings: " +  pizza.toppings + "</td>"
+  pizzaString = pizzaString +  "<td>Price:$ " +  pizza.getOnePizzaPrice() + "</td>"
+  pizzaString = pizzaString + "</tr>"
+  return pizzaString;
 }
 var newOrder = new Order();
 $(document).ready(function(){
@@ -44,11 +73,12 @@ $(document).ready(function(){
     var sizeGrabber = parseInt($("#size").val());// same thing
     var newPizza = new Pizza(toppingArray,sizeGrabber)
     newOrder.addPizzas(newPizza)
-    newOrder.displayOrder(newPizza);
+    newOrder.displayOrder();
+
     // console.log(newOrder.displayOrder())
   });
   $("#clearButton").click(function(event){
     newOrder = new Order();
-    $("#totalPrice").text(" ")
+    $("#pizzaOne").text("")
   });
 });
