@@ -1,3 +1,24 @@
 body {
-  background-color: pink;
+  background-color: orange;
+}
+tr {
+  width: 320px;
+  padding: 10px;
+  border: 10px solid red;
+  margin: 0;
+}
+h1, h2{
+  text-align: center;
+}
+.toppings {
+  float: center;
+}
+#clearButton {
+  float: right;
+}
+#addPizza{
+  float: left;
+}
+.jumbotron {
+  background-color: red;
 }

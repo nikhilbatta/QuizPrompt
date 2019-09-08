@@ -9,14 +9,17 @@
     <title></title>
   </head>
   <body>
+    <h1> Nikhils' Pizza Place </h1>
     <form id="formOne">
-    <select class="form-control field" id="amount">
-          <option value="0">Select Here:</option>
-          <option value="1">1 Pizza</option>
-          <option value="2">2 Pizzas</option>
-          <option value="3">3 Pizzas</option>
-          <option value="4">4 Pizzas</option>
-        </select>
+
+        <br>
+        <br>
+        <h2> Pick your size</h2>
+        <h3> Regular = 0</h3>
+        <h3> Small = 1 </h3>
+        <h3> Medium = 2</h3>
+        <h3> Large = 3</h3>
+        <h3> Extra Large = 4</h3>
     <select class="form-control field" id="size">
           <option value="0">Regular</option>
           <option value="1">Small</option>
@@ -24,6 +27,9 @@
           <option value="3">Large</option>
           <option value="4">Extra Large</option>
         </select>
+        <br>
+        <br>
+        <h2>Pick your toppings </h2>
 <input class="toppings"type="checkbox" name="topping" value="Ham">Ham
 <br>
 <input class="toppings" type="checkbox" name="topping" value="Sausage">Sausage
@@ -32,7 +38,7 @@
 <br>
 <input class="toppings" type="checkbox" name="topping" value="Bacon"> Bacon
 <br><br>
-        <button type="submit" name="button">Add Pizza</button>
+        <button id="addPizza" type="submit" name="button">Add Pizza</button>
 
   </form>
   <button id="clearButton" type="click" name="button">Clear Order</button>
